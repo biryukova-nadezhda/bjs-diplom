@@ -95,7 +95,7 @@ const favoritesWidget = new FavoritesWidget();
 ApiConnector.getFavorites(response => {
 
     if (response.success === true) {
-        favoritesWidget.clearTable;
+        favoritesWidget.clearTable();
         favoritesWidget.fillTable(response.data);
         moneyManager.updateUsersList(response.data);
     }
@@ -106,7 +106,7 @@ ApiConnector.getFavorites(response => {
 favoritesWidget.addUserCallback = data => {
     ApiConnector.addUserToFavorites(data, response => {
         if (response.success === true) {
-            favoritesWidget.clearTable;
+            favoritesWidget.clearTable();
             favoritesWidget.fillTable(response.data);
             moneyManager.updateUsersList(response.data);
             favoritesWidget.setMessage(response.success, "Пользователь успешно добавлен в избранное!");
@@ -119,7 +119,7 @@ favoritesWidget.addUserCallback = data => {
 favoritesWidget.removeUserCallback = data => {
     ApiConnector.removeUserFromFavorites(data, response => {
         if (response.success === true) {
-            favoritesWidget.clearTable;
+            favoritesWidget.clearTable();
             favoritesWidget.fillTable(response.data);
             moneyManager.updateUsersList(response.data);
             favoritesWidget.setMessage(response.success, "Пользователь успешно удален из избранного!");
