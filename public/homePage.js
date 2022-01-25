@@ -35,7 +35,7 @@ function getExchangeRates() {
     ApiConnector.getStocks(response => {
 
         if (response.success === true) {
-            ratesBoard.clearTable;
+            ratesBoard.clearTable();
             ratesBoard.fillTable(response.data);
             console.log("Запрос на обновление табло с курсом валют успешно выполнен!");
         } else {
@@ -44,8 +44,8 @@ function getExchangeRates() {
     })
 }
 
-///!!! Не знаю, как выполнить условие, чтобы функция вызывалась раз в минуту. Она вызываается 1 раз и все
-setInterval(getExchangeRates(), 6000);
+getExchangeRates();
+setInterval(getExchangeRates, 60000);
 
 
 
@@ -102,7 +102,7 @@ ApiConnector.getFavorites(response => {
 
 })
 
-//При очистке таблицы, она почему-то не очищается , а заново заполняется
+
 favoritesWidget.addUserCallback = data => {
     ApiConnector.addUserToFavorites(data, response => {
         if (response.success === true) {

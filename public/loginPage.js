@@ -19,7 +19,7 @@ user.registerFormCallback = data => {
             location.reload();
             console.log("Регистрация нового пользователя прошла успешно");
         } else {
-            user.setLoginErrorMessage(response.error);
+            user.setRegisterErrorMessage(response.error);
         }
     })
 }
